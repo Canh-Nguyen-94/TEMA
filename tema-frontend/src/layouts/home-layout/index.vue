@@ -4,19 +4,12 @@
 </script>
 
 <template>
-  <div class="w-full h-[100vh] overflow-auto">
-    <AppHeader />
-    <div class="w-full px-16"><RouterView /></div>
+  <div class="w-full h-[100vh] overflow-auto relative">
+    <div class="w-[50%] absolute top-0 pl-[50px]">
+      <AppHeader />
+    </div>
+    <RouterView />
   </div>
 </template>
 
-<style scoped>
-  .main {
-    margin-left: 280px;
-    transition: 0.3s;
-
-    &.collapsed {
-      margin-left: 110px;
-    }
-  }
-</style>
+<style scoped></style>
