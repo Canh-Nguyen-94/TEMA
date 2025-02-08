@@ -31,7 +31,7 @@
       <div
         v-if="isMenuOpen"
         ref="menuRef"
-        class="w-[327px] h-[100vh] fixed top-0 right-0 z-[1000] px-4 pt-[77px] flex flex-col justify-between gap-4 bg-primary opacity-70"
+        class="w-[327px] h-screen fixed top-0 right-0 z-[1000] px-4 pt-[77px] flex flex-col justify-between gap-4 bg-primary opacity-70"
       >
         <X
           class="absolute top-4 right-4 text-background cursor-pointer"
