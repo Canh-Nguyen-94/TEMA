@@ -13,7 +13,7 @@ const home = [
         component: () => import("@views/home/Landing.vue"),
       },
       {
-        path: "tutorial",
+        path: "tutorials",
         name: "Tutorial",
         displayName: "Tutorial",
         displayMobile: true,
@@ -21,7 +21,7 @@ const home = [
         component: () => import("@views/home/Tutorial.vue"),
       },
       {
-        path: "case-studies",
+        path: "studies",
         name: "Case Studies",
         displayName: "Case Studies",
         displayMobile: true,
@@ -29,9 +29,9 @@ const home = [
         component: () => import("@views/home/CaseStudies.vue"),
       },
       {
-        path: "resource",
-        name: "Resource",
-        displayName: "Resource",
+        path: "resources",
+        name: "Resources",
+        displayName: "Resources",
         displayMobile: true,
         icon: "resource",
         component: () => import("@views/home/Resource.vue"),

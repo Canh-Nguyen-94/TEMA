@@ -3,25 +3,29 @@ import { fileURLToPath, URL } from "node:url";
 import { resolve, dirname } from "node:path";
 import vue from "@vitejs/plugin-vue";
 import autoprefixer from "autoprefixer";
-import tailwindcss from "@tailwindcss/vite";
+// import tailwindcss from "@tailwindcss/vite";
 import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite";
 import { alias } from "./configs/paths.config";
+import tailwind from "tailwindcss";
 
-export default ({ mode }) => {
+export default defineConfig(({ mode }) => {
   const root = process.cwd();
   const env = loadEnv(mode, root);
 
-  return defineConfig({
+  return {
     root,
     base: "/",
     publicDir: "public",
+    css: {
+      postcss: {
+        plugins: [tailwind(), autoprefixer()],
+      },
+    },
     define: {
       "process.env": env,
     },
     plugins: [
       vue(),
-      tailwindcss(),
-      autoprefixer(),
       VueI18nPlugin({
         include: resolve(
           dirname(fileURLToPath(import.meta.url)),
@@ -37,5 +41,5 @@ export default ({ mode }) => {
     resolve: { alias },
     esbuild: {},
     build: {},
-  });
-};
+  };
+});
