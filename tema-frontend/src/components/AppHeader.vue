@@ -1,4 +1,5 @@
 <script setup>
+  import { ref } from "vue";
   import {
     Select,
     SelectContent,
@@ -10,12 +11,10 @@
   } from "@common/ui/select";
   import england from "@assets/images/england.png";
   import vietnam from "@assets/images/vietnam.png";
+  import { headerItems } from "@assets/data";
+  import { CircleChevronRight, Menu, X } from "lucide-vue-next";
 
-  const headerItems = [
-    { id: 1, title: "Tutorials", icon: "tutorial" },
-    { id: 2, title: "Case Studies", icon: "studies" },
-    { id: 1, title: "Resources", icon: "resources" },
-  ];
+  const model = defineModel();
 
   const languages = [
     {
@@ -34,31 +33,49 @@
 </script>
 
 <template>
-  <div class="flex flex-row gap-6 items-center">
-    <p v-for="item in headerItems" :key="item.id" class="text-lg">
+  <div
+    class="flex flex-row gap-6 justify-between items-center mt-4 md:mt-[60px]"
+  >
+    <p class="flex gap-2">
+      <CircleChevronRight class="bg-primary text-background rounded-[50%]" />
+      <span class="md:hidden text-lg font-bold">macode.</span>
+    </p>
+
+    <p
+      v-for="item in headerItems"
+      :key="item.id"
+      class="text-lg font-[250] leading-[26px] hidden lg:block"
+    >
       {{ item.title }}
     </p>
-    <Select :default-value="languages[0].value">
-      <SelectTrigger class="w-[180px]">
-        <SelectValue />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectItem
-            v-for="item in languages"
-            :key="item.id"
-            :value="item.value"
-          >
-            <div class="flex gap-1">
-              <img :src="item.image" />
-              <p>
-                {{ item.title }}
-              </p>
-            </div>
-          </SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+    <div class="flex gap-2">
+      <Select :default-value="languages[0].value">
+        <SelectTrigger class="w-[180px] bg-input rounded-[12px]">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent class="bg-input">
+          <SelectGroup>
+            <SelectItem
+              v-for="item in languages"
+              :key="item.id"
+              :value="item.value"
+              class="hover:bg-background"
+            >
+              <div class="flex gap-1">
+                <img :src="item.image" />
+                <p>
+                  {{ item.title }}
+                </p>
+              </div>
+            </SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+      <Menu
+        class="md:hidden text-primary cursor-pointer"
+        @click="model = !model"
+      />
+    </div>
   </div>
 </template>
 

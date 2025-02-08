@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div>Home Page</div>
+  <div>Resource</div>
 </template>
 
 <style scoped></style>

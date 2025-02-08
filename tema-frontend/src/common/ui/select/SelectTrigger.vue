@@ -1,23 +1,23 @@
 <script setup>
-import { computed } from 'vue'
-import { SelectIcon, SelectTrigger, useForwardProps } from 'radix-vue'
-import { ChevronDown } from 'lucide-vue-next'
-import { cn } from '@utils/ui-shadcn.util'
+  import { computed } from "vue";
+  import { SelectIcon, SelectTrigger, useForwardProps } from "radix-vue";
+  import { ChevronDown } from "lucide-vue-next";
+  import { cn } from "@utils/ui-shadcn.util";
 
-const props = defineProps({
-  disabled: { type: Boolean, required: false },
-  asChild: { type: Boolean, required: false },
-  as: { type: null, required: false },
-  class: { type: null, required: false }
-})
+  const props = defineProps({
+    disabled: { type: Boolean, required: false },
+    asChild: { type: Boolean, required: false },
+    as: { type: null, required: false },
+    class: { type: null, required: false },
+  });
 
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
+  const delegatedProps = computed(() => {
+    const { class: _, ...delegated } = props;
 
-  return delegated
-})
+    return delegated;
+  });
 
-const forwardedProps = useForwardProps(delegatedProps)
+  const forwardedProps = useForwardProps(delegatedProps);
 </script>
 
 <template>
@@ -32,7 +32,7 @@ const forwardedProps = useForwardProps(delegatedProps)
   >
     <slot />
     <SelectIcon as-child>
-      <ChevronDown class="w-6 h-6 text-secondary" />
+      <ChevronDown class="w-6 h-6 text-primary" />
     </SelectIcon>
   </SelectTrigger>
 </template>

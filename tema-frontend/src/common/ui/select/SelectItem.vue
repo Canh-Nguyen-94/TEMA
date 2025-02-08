@@ -1,25 +1,30 @@
 <script setup>
-import { computed } from 'vue'
-import { SelectItem, SelectItemIndicator, SelectItemText, useForwardProps } from 'radix-vue'
-import { Check } from 'lucide-vue-next'
-import { cn } from '@utils/ui-shadcn.util'
+  import { computed } from "vue";
+  import {
+    SelectItem,
+    SelectItemIndicator,
+    SelectItemText,
+    useForwardProps,
+  } from "radix-vue";
+  import { Check } from "lucide-vue-next";
+  import { cn } from "@utils/ui-shadcn.util";
 
-const props = defineProps({
-  value: { type: Number || String, required: true },
-  disabled: { type: Boolean, required: false },
-  textValue: { type: String, required: false },
-  asChild: { type: Boolean, required: false },
-  as: { type: null, required: false },
-  class: { type: null, required: false }
-})
+  const props = defineProps({
+    value: { type: Number || String, required: true },
+    disabled: { type: Boolean, required: false },
+    textValue: { type: String, required: false },
+    asChild: { type: Boolean, required: false },
+    as: { type: null, required: false },
+    class: { type: null, required: false },
+  });
 
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
+  const delegatedProps = computed(() => {
+    const { class: _, ...delegated } = props;
 
-  return delegated
-})
+    return delegated;
+  });
 
-const forwardedProps = useForwardProps(delegatedProps)
+  const forwardedProps = useForwardProps(delegatedProps);
 </script>
 
 <template>
@@ -27,7 +32,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     v-bind="forwardedProps"
     :class="
       cn(
-        'relative flex w-full cursor-pointer select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'relative flex w-full cursor-pointer select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none hover:bg-background hover:text-accent-foreground focus:bg-background focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
         props.class
       )
     "
