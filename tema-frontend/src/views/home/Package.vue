@@ -82,7 +82,7 @@
           </p>
         </div>
         <Button
-          class="w-full"
+          class="w-full rounded-[10px]"
           :class="item.id == 2 ? 'bg-accent' : 'text-accent'"
           >{{ item.button }}</Button
         >
