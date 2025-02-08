@@ -36,17 +36,20 @@
   <div
     class="flex flex-row gap-6 justify-between items-center mt-4 md:mt-[60px]"
   >
-    <p class="flex gap-2">
-      <CircleChevronRight class="bg-primary text-background rounded-[50%]" />
-      <span class="md:hidden text-lg font-bold">macode.</span>
-    </p>
-
+    <RouterLink to="/">
+      <p class="flex gap-2">
+        <CircleChevronRight class="bg-primary text-background rounded-[50%]" />
+        <span class="md:hidden text-lg font-bold">macode.</span>
+      </p>
+    </RouterLink>
     <p
       v-for="item in headerItems"
       :key="item.id"
       class="text-lg font-[250] leading-[26px] hidden lg:block"
     >
-      {{ item.title }}
+      <RouterLink :to="item.path">
+        {{ item.title }}
+      </RouterLink>
     </p>
     <div class="flex gap-2">
       <Select :default-value="languages[0].value">

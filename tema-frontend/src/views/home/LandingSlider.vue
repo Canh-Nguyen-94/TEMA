@@ -61,7 +61,7 @@
 
 <template>
   <div
-    class="flex flex-wrap md:flex-nowrap md:gap-20 items-center w-full overflow-hidden md:pt-[119px] pb-[56px] px-4 md:pl-[50px] bg-foreground"
+    class="max-w-[100vw] flex flex-wrap md:flex-nowrap md:gap-20 items-center w-full overflow-hidden md:pt-[119px] pb-[56px] px-4 md:pl-[50px] bg-foreground"
   >
     <div class="md:w-[40%]">
       <p
@@ -77,7 +77,7 @@
     </div>
     <div class="w-full md:w-60% flex flex-col items-center">
       <Carousel
-        class="relative w-full mb-[66px] md:mt-0"
+        class="relative w-full max-w-xs md:max-w-full mb-[66px] md:mt-0"
         :opts="{
           align: 'start',
           loop: true,
@@ -109,25 +109,23 @@
           loop: true,
         }"
         @init-api="(val) => (emblaMainApi = val)"
-        class="md:translate-x-[-270px] md:translate-y-[-30px]"
+        class="md:hidden"
       >
-        <CarouselContent>
-          <div class="flex gap-3">
-            <div
-              v-for="(item, index) in items"
-              :key="item.id"
-              class="basis-1/4 cursor-pointer"
-              @click="onThumbClick(index)"
-            >
-              <span
-                :class="
-                  index === selectedIndex
-                    ? 'bg-accent w-[82px]'
-                    : 'bg-muted w-[51px]'
-                "
-                class="block font-semibold h-[11px]"
-              ></span>
-            </div>
+        <CarouselContent class="flex gap-3">
+          <div
+            v-for="(item, index) in items"
+            :key="item.id"
+            class="basis-1/4 cursor-pointer"
+            @click="onThumbClick(index)"
+          >
+            <span
+              :class="
+                index === selectedIndex
+                  ? 'bg-accent w-[82px]'
+                  : 'bg-muted w-[51px]'
+              "
+              class="block font-semibold h-[11px]"
+            ></span>
           </div>
         </CarouselContent>
       </Carousel>
